@@ -12,10 +12,15 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://pritiprabha:priti@123@
 
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://digital-birth-certificate-management-dazn.onrender.com'],
+  origin: [
+    'http://localhost:3000',
+    'https://digital-birth-certificate-management-dazn.onrender.com',
+    'https://digital-birth-certificate-managemen.vercel.app'
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+  exposedHeaders: ['Content-Length', 'x-auth-token'],
 }));
 
 mongoose.connect(MONGO_URI, { family: 4 })
