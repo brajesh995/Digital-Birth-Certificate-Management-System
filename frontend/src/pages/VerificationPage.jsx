@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import moment from 'moment'; // Added for date and time formatting
+import config from '../config';
 
 const VerificationPage = () => {
   const [certificateId, setCertificateId] = useState('');
@@ -14,7 +15,7 @@ const VerificationPage = () => {
     setVerificationResult(null);
 
     try {
-      const response = await fetch(`/api/certificate/verify/${certificateId}`);
+      const response = await fetch(`${config.backendUrl}/api/certificate/verify/${certificateId}`);
       const data = await response.json();
 
       if (!response.ok && response.status !== 404) {

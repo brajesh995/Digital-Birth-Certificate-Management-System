@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import config from '../../config';
 import AnalyticsPanel from './components/AnalyticsPanel';
 import SearchAndFilters from './components/SearchAndFilters';
 import ApplicationsTable from './components/ApplicationsTable';
@@ -22,7 +23,7 @@ const ReportsPanel = () => {
         throw new Error('Authentication token not found.');
       }
 
-      const response = await fetch('/api/admin/reports/csv', {
+      const response = await fetch(`${config.backendUrl}/api/admin/reports/csv`, {
         headers: {
           'x-auth-token': token,
         },
@@ -59,7 +60,7 @@ const ReportsPanel = () => {
         throw new Error('Authentication token not found.');
       }
 
-      const response = await fetch('/api/admin/reports/pdf', {
+      const response = await fetch(`${config.backendUrl}/api/admin/reports/pdf`, {
         headers: {
           'x-auth-token': token,
         },
@@ -178,7 +179,7 @@ const AdminDashboard = () => {
           throw new Error('Unauthorized access. Must be an admin.');
         }
 
-        const response = await fetch('/api/applications/all', {
+        const response = await fetch(`${config.backendUrl}/api/applications/all`, {
           headers: {
             'x-auth-token': token,
           },

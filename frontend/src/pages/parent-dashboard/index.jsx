@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import config from '../../config';
 import SummaryStats from './components/SummaryStats';
 import SearchAndFilter from './components/SearchAndFilter';
 import ApplicationCard from './components/ApplicationCard';
@@ -56,7 +57,7 @@ const ParentDashboard = () => {
           throw new Error('No authentication token found.');
         }
 
-        const response = await fetch('/api/applications/my', {
+        const response = await fetch(`${config.backendUrl}/api/applications/my`, {
           headers: {
             'x-auth-token': token,
           },

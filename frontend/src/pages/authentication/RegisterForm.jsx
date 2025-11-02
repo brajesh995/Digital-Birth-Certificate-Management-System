@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import config from '../../config';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const res = await fetch("/api/auth/register", {
+      const res = await fetch(`${config.backendUrl}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

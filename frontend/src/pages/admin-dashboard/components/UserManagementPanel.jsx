@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import config from '../../../config';
 
 const UserManagementPanel = () => {
   const [users, setUsers] = useState([]);
@@ -26,7 +27,7 @@ const UserManagementPanel = () => {
           throw new Error('Authentication token not found.');
         }
 
-        const response = await fetch('/api/users', {
+        const response = await fetch(`${config.backendUrl}/api/users`, {
           headers: {
             'x-auth-token': token,
           },
@@ -68,7 +69,7 @@ const UserManagementPanel = () => {
         throw new Error('Authentication token not found.');
       }
 
-      const response = await fetch(`/api/users/${userId}`, {
+      const response = await fetch(`${config.backendUrl}/api/users/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +104,7 @@ const UserManagementPanel = () => {
           throw new Error('Authentication token not found.');
         }
 
-        const response = await fetch(`/api/users/${userId}`, {
+        const response = await fetch(`${config.backendUrl}/api/users/${userId}`, {
           method: 'DELETE',
           headers: {
             'x-auth-token': token,
