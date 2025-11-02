@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = 'mongodb+srv://231fa04c59_db_user:Piyush2005@cluster0.mwoixjm.mongodb.net/birth?retryWrites=true&w=majority&appName=Cluster0';
+// const MONGO_URI = 'mongodb+srv://231fa04c59_db_user:Piyush2005@cluster0.mwoixjm.mongodb.net/birth?retryWrites=true&w=majority&appName=Cluster0';
 
 
 app.use(express.json());
@@ -24,7 +24,7 @@ app.use(cors({
   exposedHeaders: ['Content-Length', 'x-auth-token'],
 }));
 
-mongoose.connect(MONGO_URI, { family: 4 })
+mongoose.connect('mongodb+srv://231fa04c59_db_user:Piyush2005@cluster0.mwoixjm.mongodb.net/birth?retryWrites=true&w=majority&appName=Cluster0' , { family: 4 })
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.error('MongoDB Connection Error:', err));
 
